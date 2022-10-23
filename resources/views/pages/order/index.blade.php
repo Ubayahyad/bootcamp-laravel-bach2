@@ -30,24 +30,26 @@
                 </span>
                 @enderror
               </div>
+            </div>
 
-              <div class="row mb-3">
-                <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Total') }}</label>
 
-                <div class="col-md-6">
-                  <input type="number" class="form-control @error('total') is-invalid @enderror" name="total">
+            <div class="row mb-3">
+              <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Total') }}</label>
 
-                  @error('total')
-                  <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                  </span>
-                  @enderror
-                </div>
+              <div class="col-md-6">
+                <input type="number" class="form-control @error('total') is-invalid @enderror" name="total">
+
+                @error('total')
+                <span class="invalid-feedback" role="alert">
+                  <strong>{{ $message }}</strong>
+                </span>
+                @enderror
               </div>
+            </div>
 
-              <div class="row mb-3">
-                <button type="submit" class="btn btn-primary btn-md">Simpan</button>
-              </div>
+            <div class="row mb-3">
+              <button type="submit" class="btn btn-primary btn-md">Simpan</button>
+            </div>
           </form>
           <table class="table">
             <thead>

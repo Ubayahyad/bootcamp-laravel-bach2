@@ -19,15 +19,23 @@ class orderController extends Controller
   public function create(Request $request)
   {
     $request->validate([
-      'product_id' => ['required', 'exist:products,id']
+      'product_id' => ['required', 'exists:products,id'],
+      'total' => ['required', 'integer']
     ]);
-    $user = $request->user();
 
-    // $user->orders()
-    //   ->create([
-    //     'total' => 2,
-    //     'status' => Order::UNPAID;
-    //   ]);
-    //   return redirect()->back();
+
+    $order = $request->user()
+      ->orders()
+      ->create([
+        'total' => 0,
+        'status' => Order::UNPAID
+      ])
+      ->products()
+      ->attach(
+        $request->input('product_id'),
+        ['amount' => $request->input('total')]
+      );
+
+    return redirect()->back();
   }
 }
